@@ -23,6 +23,7 @@ services:
       - database:database
     image: "${COMPOSE_PROJECT_NAME}" # Name of the instance for docker create based on project name
     container_name: "${COMPOSE_PROJECT_NAME}" # Name of the ADempiere client container
+    hostname: "${COMPOSE_PROJECT_NAME}"
     ports:
       - ${ADEMPIERE_WEB_PORT}:8888 # http port where the web client will be exposed
       - ${ADEMPIERE_SSL_PORT}:4444 # https port where the web client will be exposed
