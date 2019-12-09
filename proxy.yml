@@ -26,4 +26,7 @@ services:
     volumes:
       - ./data/letsencrypt/config:/config
     networks:
-     - zammad-network
+      - custom
+networks:
+  custom:
+    external: true
