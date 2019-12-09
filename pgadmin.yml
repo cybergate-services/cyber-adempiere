@@ -1,0 +1,15 @@
+version: '2.1'
+services:
+  pgadmin:
+    image: adminer
+    container_name: pgadmin
+    hostname: pgadmin
+    restart: always
+    #ports:
+    #  - 8080:8080
+    # depends_on:
+    #  - postgresql
+    networks:
+      - custom
+      
+        
