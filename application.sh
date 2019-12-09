@@ -67,6 +67,13 @@ then
     docker network create -d bridge custom
 fi
 
+RUNNING=$(docker inspect --format="{{.State.Running}}" proxy 2> /dev/null)
+if [ $? -eq 1 ]; then
+  echo "Proxy container does not exist."
+  echo "Create Proxy container"
+    docker-compose -f "$BASE_DIR/proxy.yml" up -d
+fi
+
 RUNNING=$(docker inspect --format="{{.State.Running}}" postgres_database_1 2> /dev/null)
 if [ $? -eq 1 ]; then
   echo "Dababase container does not exist."
