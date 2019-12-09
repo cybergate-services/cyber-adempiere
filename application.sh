@@ -74,6 +74,13 @@ if [ $? -eq 1 ]; then
     docker-compose -f "$BASE_DIR/proxy.yml" up -d
 fi
 
+RUNNING=$(docker inspect --format="{{.State.Running}}" pgadmin 2> /dev/null)
+if [ $? -eq 1 ]; then
+  echo "Pgadmin container does not exist."
+  echo "Create pgadmin container"
+    docker-compose -f "$BASE_DIR/pgadmin.yml" up -d
+fi
+
 RUNNING=$(docker inspect --format="{{.State.Running}}" postgres_database_1 2> /dev/null)
 if [ $? -eq 1 ]; then
   echo "Dababase container does not exist."
