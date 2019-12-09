@@ -16,6 +16,8 @@ version: '2.0'
 services:
   database:
     image: postgres:${PG_VERSION}
+    container_name: postgres
+    hostname: postgres
     ports:
       - "${ADEMPIERE_DB_PORT}:5432"
     volumes:
