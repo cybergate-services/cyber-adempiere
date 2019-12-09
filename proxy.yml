@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+
+  proxy:
+    image: cybergatelabs/letsencrypt
+    container_name: proxy
+    hostname: proxy
+    cap_add:
+      - NET_ADMIN
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TZ}
+      - URL=${URL}
+      - SUBDOMAINS=${SUBDOMAINS},
+      - EXTRA_DOMAINS=${EXTRA_DOMAINS}
+      - VALIDATION=${VALIDATION}
+      - EMAIL=${EMAIL}
+      - DHLEVEL=${DHLEVEL}
+      - ONLY_SUBDOMAINS=${ONLY_SUBDOMAINS}
+      - STAGING=${STAGING}
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./data/letsencrypt/config:/config
+    networks:
+     - zammad-network
