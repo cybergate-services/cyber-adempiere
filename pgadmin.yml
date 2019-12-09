@@ -11,8 +11,8 @@ services:
     #  - postgresql
     networks:
       - custom
- networks:
-   custom:
-     external: true
+networks:
+  custom:
+    external: true
       
         
